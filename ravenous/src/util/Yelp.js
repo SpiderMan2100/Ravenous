@@ -7,7 +7,7 @@ const Yelp = {
                 Authorization: `Bearer ${apiKey}`
             }
         }).then(response => {
-            return response.json;
+            return response.json();
         }).then(jsonResponse => {
             if (jsonResponse.businesses) {
                 return jsonResponse.businesses.map(business => ({
@@ -16,7 +16,7 @@ const Yelp = {
                     name: business.name,
                     address: business.location.address1,
                     city: business.location.city,
-                    state: business.locations.state,
+                    state: business.location.state,
                     zipCode: business.location.zip_code,
                     category: business.categories[0].title,
                     rating: business.rating,
